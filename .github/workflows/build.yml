@@ -1,0 +1,33 @@
+name: Zotero native Termux x86_64
+run-name: Zotero ${{ inputs.source_sha }} / ${{ inputs.request_id }}
+on:
+  workflow_dispatch:
+    inputs:
+      source_sha:
+        description: Exact Zotero Termux source commit
+        required: true
+        type: string
+      request_id:
+        description: Request identifier from the source workflow
+        required: true
+        type: string
+      gecko_run:
+        description: Optional matching Gecko artifact from this builder
+        type: string
+      gecko_release:
+        description: Optional matching Gecko archive in a source release
+        type: string
+permissions:
+  contents: read
+  actions: read
+concurrency:
+  group: zotero-x86_64-${{ inputs.source_sha }}
+  cancel-in-progress: false
+jobs:
+  build:
+    uses: openresearchtools/zotero-termux/.github/workflows/termux-native.yml@aacf455290cf85ef1d326750dfce071040ff25c7
+    with:
+      source_sha: ${{ inputs.source_sha }}
+      architecture: x86_64
+      gecko_run: ${{ inputs.gecko_run || '' }}
+      gecko_release: ${{ inputs.gecko_release || '' }}
