@@ -13,5 +13,6 @@ compiler-cache entries and the separately reusable component remain in this
 repository. Packages can be downloaded directly from the completed Actions run.
 
 The source workflow dispatches this builder and collects its matching package.
-It requires `BUILD_REPOS_TOKEN` with Actions read/write access to this builder.
+The source repository uses a `TERMUX` secret containing a fine-grained token
+limited to this builder: Actions read/write, Contents read, and Metadata read.
 This repository requires no signing secret and publishes no GitHub releases.
