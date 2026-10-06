@@ -25,7 +25,7 @@ concurrency:
   cancel-in-progress: false
 jobs:
   build:
-    uses: openresearchtools/zotero-termux/.github/workflows/termux-native.yml@aacf455290cf85ef1d326750dfce071040ff25c7
+    uses: openresearchtools/zotero-termux/.github/workflows/termux-native.yml@90d536028f3d210d1ccf80ede5960b1c9b9bab9a
     with:
       source_sha: ${{ inputs.source_sha }}
       architecture: x86_64
